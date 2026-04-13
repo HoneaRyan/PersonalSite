@@ -3,20 +3,21 @@
 <!-- Your core identity. This becomes the header panel of the character screen. -->
 
 ## Name
+
 Ryan Honea
 
 ## Title
-<!-- Your role/job title — shown beneath your name like a character class -->
-<!-- Example: "Full Stack Engineer" or "Software Sorcerer" -->
+
+Senior Data Scientist
 
 ## Level
-<!-- Years of experience, or a made-up level number -->
-<!-- Example: 5 or "Lv. 5" -->
+
+31
 
 ## Class
-<!-- Optional — a fun RPG class that maps to your actual role -->
-<!-- Example: "Arcane Engineer", "Code Paladin" -->
+
+Analytical Artificer
 
 ## Bio
-<!-- 1-2 sentences. Written in second person or RPG flavor text is fun but not required. -->
-<!-- Example: "A seasoned builder of web systems, known for clean APIs and an obsession with good DX." -->
+
+Builder of data pipelines and gateways, master of delving the arcane mysteries with machine learning, and wielder of the 3rd great Jorgumandr, "Python".

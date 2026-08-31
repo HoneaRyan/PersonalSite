@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content'
+import Base from '@/layouts/Base.astro'
+import SectionHeading from '@/components/site/SectionHeading.astro'
+import ProjectCard from '@/components/site/ProjectCard.astro'
+import MetricTile from '@/components/site/MetricTile.astro'
+import { SITE, url } from '@/lib/site'
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+const featured = (projects.some((p) => p.data.featured)
+  ? projects.filter((p) => p.data.featured)
+  : projects
+).slice(0, 4)
+
+const posts = await getCollection('posts', ({ data }) => !data.draft)
+const external = await getCollection('externalPosts')
+const writing = [
+  ...posts.map((p) => ({
+    title: p.data.title,
+    description: p.data.description,
+    date: p.data.pubDate,
+    href: url(`/writing/${p.id}/`),
+    external: false,
+    source: '',
+  })),
+  ...external.map((p) => ({
+    title: p.data.title,
+    description: p.data.description ?? '',
+    date: p.data.pubDate,
+    href: p.data.url,
+    external: true,
+    source: p.data.source,
+  })),
+]
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, 3)
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+
+const pillars = [
+  {
+    index: '01',
+    title: 'Grant-based data work',
+    body: 'Scoping and delivering data systems where grants are the engine — work that funders will back, shipped accountably, with the measurement built in from day one.',
+  },
+  {
+    index: '02',
+    title: 'Digital government',
+    body: 'Bringing modern data principles — pipelines, lineage, measurement — to public-sector systems, so government services get faster, clearer, and more accountable.',
+  },
+  {
+    index: '03',
+    title: 'Nonprofit data → funding power',
+    body: 'Turning nonprofit program data into actionable, metric-based evidence: the numbers that prove impact and compete for government grants.',
+  },
+]
+---
+
+<Base>
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden border-b border-line">
+    <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden></div>
+    <div class="relative mx-auto flex max-w-5xl flex-col gap-6 px-5 py-20 md:px-8 md:py-28">
+      <p class="label-mono text-accent">{SITE.name} · Senior Data Scientist · Memphis, TN</p>
+      <h1 class="max-w-3xl text-4xl font-semibold tracking-tight text-balance md:text-5xl">
+        Better public services run on better data.
+      </h1>
+      <p class="max-w-2xl text-lg leading-relaxed text-ink-soft">
+        I do grant-funded data work: modernizing government systems with modern data principles,
+        and helping nonprofits turn their program data into the metrics that win public funding.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href={url('/projects/')}
+          class="bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-accent-strong"
+        >
+          View projects
+        </a>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+        >
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Track record (all figures from real delivered work) ─────────── -->
+  <section class="border-b border-line bg-surface/60">
+    <div class="mx-auto grid max-w-5xl grid-cols-2 gap-3 px-5 py-8 md:grid-cols-4 md:px-8">
+      <MetricTile value="$550M+" label="federal relief processed" />
+      <MetricTile value="100+" label="dashboards supported" />
+      <MetricTile value="1,000+" label="platform users" />
+      <MetricTile value="8+" label="years in data science" />
+    </div>
+  </section>
+
+  <!-- ── What I do ────────────────────────────────────────────────────── -->
+  <section class="mx-auto max-w-5xl px-5 py-16 md:px-8">
+    <SectionHeading title="What I do" />
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
+      {
+        pillars.map((pillar) => (
+          <div class="flex flex-col gap-3 border border-line bg-surface p-5">
+            <span class="label-mono text-accent">{pillar.index}</span>
+            <h3 class="font-semibold tracking-tight">{pillar.title}</h3>
+            <p class="text-sm leading-relaxed text-ink-soft">{pillar.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ── Featured projects ────────────────────────────────────────────── -->
+  <section class="mx-auto max-w-5xl px-5 py-8 md:px-8">
+    <SectionHeading title="Projects" href={url('/projects/')} />
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <!-- ── Recent writing ───────────────────────────────────────────────── -->
+  <section class="mx-auto max-w-5xl px-5 py-8 md:px-8">
+    <SectionHeading title="Writing" href={url('/writing/')} />
+    {
+      writing.length > 0 ? (
+        <ul class="mt-2 flex flex-col">
+          {writing.map((item) => (
+            <li class="border-b border-line last:border-0">
+              <a
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
+                class="group flex flex-col gap-1 py-4"
+              >
+                <span class="label-mono text-ink-faint">
+                  {dateFmt.format(item.date)}
+                  {item.external && ` · ${item.source} ↗`}
+                </span>
+                <span class="font-medium transition-colors group-hover:text-accent">
+                  {item.title}
+                </span>
+                {item.description && (
+                  <span class="text-sm text-ink-soft">{item.description}</span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="mt-6 text-sm text-ink-soft">
+          First posts are in the works — on grant-funded data systems, digital government, and
+          the metrics that win funding.
+        </p>
+      )
+    }
+  </section>
+</Base>

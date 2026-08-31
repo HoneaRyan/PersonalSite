@@ -1,0 +1,218 @@
+---
+import { getCollection } from 'astro:content'
+import Base from '@/layouts/Base.astro'
+import SectionHeading from '@/components/site/SectionHeading.astro'
+import TechChips from '@/components/site/TechChips.astro'
+import { SITE } from '@/lib/site'
+
+const experience = (await getCollection('experience')).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+
+const toolbox = [
+  {
+    group: 'Languages',
+    items: [
+      'Python (pandas, PySpark, Jupyter)',
+      'SQL (SQL Server, Oracle, Teradata, MySQL)',
+      'R (tidyverse, Shiny, ggplot2)',
+      'JavaScript (React)',
+    ],
+  },
+  {
+    group: 'Platforms & tools',
+    items: [
+      'Databricks (model serving & deployment)',
+      'Azure Data Factory',
+      'Informatica Suite',
+      'SQL Server Integration Services',
+      'Power Apps / Power Automate',
+      'Git',
+    ],
+  },
+  {
+    group: 'Methods',
+    items: [
+      'Machine learning & model building',
+      'Generalized linear models',
+      'Time series & forecasting',
+      'Natural language processing',
+      'Stochastic processes',
+      'Nonparametric tests',
+    ],
+  },
+  {
+    group: 'Ways of working',
+    items: [
+      'LEAN-AGILE delivery',
+      'Quality Driven Management (QDM)',
+      'Executive stakeholder engagement',
+      'Data storytelling',
+    ],
+  },
+]
+
+const practices = [
+  { name: 'Data Architecture', blurb: 'Data models and warehouses designed to outlive their original context.' },
+  { name: 'System Design', blurb: 'Architecture that keeps its shape under scale, failure, and change.' },
+  { name: 'Backend & API Design', blurb: 'Careful contracts, purposeful endpoints, clean service boundaries.' },
+  { name: 'Technical Leadership', blurb: 'Alignment, review, and mentorship that raise a whole team’s output.' },
+  { name: 'Infrastructure', blurb: 'Cloud environments and deployment pipelines provisioned with intention.' },
+  { name: 'System Auditing', blurb: 'Tracing anomalies through logs and lineage to independent, actionable findings.' },
+]
+
+const education = [
+  {
+    school: 'Austin Peay State University',
+    degree: 'Master of Predictive Analytics',
+    year: '2018',
+  },
+  {
+    school: 'Austin Peay State University',
+    degree: 'B.S. Statistics & Pure Mathematics',
+    year: '2017',
+  },
+]
+
+const certifications = [
+  'AZ-900 Azure Fundamentals',
+  'Quality-Driven Management Expert — American Society for Quality (Six Sigma Green Belt equivalent)',
+  'QDM Silver Cup (2020) — Business Leading Analytics Driving the Enterprise',
+  'Big Data Specialization — UC San Diego',
+  'Machine Learning Specialization — University of Washington',
+]
+---
+
+<Base title={`About — ${SITE.name}`} description="Ryan Honea — senior data scientist working across government, grants, and public-interest data.">
+  <section class="mx-auto max-w-3xl px-5 py-14 md:px-8">
+    <p class="label-mono text-accent">About</p>
+    <h1 class="mt-3 text-3xl font-semibold tracking-tight">Ryan Honea</h1>
+    <div class="mt-6 flex flex-col gap-4 leading-relaxed text-ink-soft">
+      <p>
+        I'm a data scientist in Memphis with eight-plus years of experience modernizing data
+        systems and deploying large-scale machine learning — most of it in the federal and
+        public sector, where the work is grant-funded and the standard is audit-ready. Today I
+        lead a multidisciplinary data science team working on government digital transformation:
+        end-to-end data platforms, relief-program data operations, and mainframe-to-cloud
+        modernization.
+      </p>
+      <p>
+        The other half of that mission is nonprofits. Organizations doing important work often
+        sit on program data that never becomes evidence. I help them turn it into actionable,
+        metric-based power — the numbers that prove impact and win government funding.
+      </p>
+      <p>
+        The best way to reach me is by email at{' '}
+        <a href={`mailto:${SITE.email}`} class="text-accent underline underline-offset-4">
+          {SITE.email}
+        </a>
+        .
+      </p>
+    </div>
+
+    <!-- ── Experience ──────────────────────────────────────────────────── -->
+    <div class="mt-14">
+      <SectionHeading index="01" title="Experience" />
+      <ol class="mt-2 flex flex-col">
+        {
+          experience.map((entry) => (
+            <li class="grid gap-2 border-b border-line py-6 last:border-0 md:grid-cols-[8rem_1fr] md:gap-6">
+              <span class="label-mono pt-1 text-ink-faint">
+                {entry.data.start} — {entry.data.end ?? 'Present'}
+              </span>
+              <div class="flex flex-col gap-2">
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 class="font-semibold tracking-tight">{entry.data.role}</h3>
+                  <span class="text-sm text-ink-soft">{entry.data.org}</span>
+                  {entry.data.location && (
+                    <span class="label-mono text-ink-faint">{entry.data.location}</span>
+                  )}
+                </div>
+                <p class="text-sm leading-relaxed text-ink-soft">{entry.data.summary}</p>
+                {entry.data.highlights.length > 0 && (
+                  <ul class="flex flex-col gap-1.5">
+                    {entry.data.highlights.map((h) => (
+                      <li class="flex gap-2 text-sm leading-relaxed text-ink-soft">
+                        <span class="text-accent" aria-hidden>
+                          ▪
+                        </span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <TechChips tech={entry.data.tech} />
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <!-- ── Toolbox ─────────────────────────────────────────────────────── -->
+    <div class="mt-14">
+      <SectionHeading index="02" title="Toolbox" />
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {
+          toolbox.map((section) => (
+            <div class="border border-line bg-surface p-5">
+              <h3 class="label-mono text-ink-faint">{section.group}</h3>
+              <ul class="mt-3 flex flex-col gap-1.5">
+                {section.items.map((item) => (
+                  <li class="text-sm text-ink-soft">{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ── Practice areas ──────────────────────────────────────────────── -->
+    <div class="mt-14">
+      <SectionHeading index="03" title="Practice areas" />
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {
+          practices.map((practice) => (
+            <div class="flex flex-col gap-1.5 border-b border-line pb-4">
+              <h3 class="font-medium tracking-tight">{practice.name}</h3>
+              <p class="text-sm leading-relaxed text-ink-soft">{practice.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ── Education & certifications ──────────────────────────────────── -->
+    <div class="mt-14">
+      <SectionHeading index="04" title="Education & certifications" />
+      <div class="mt-6 flex flex-col gap-8">
+        <ol class="flex flex-col gap-4">
+          {
+            education.map((e) => (
+              <li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-4">
+                <div class="flex flex-col gap-0.5">
+                  <span class="font-medium tracking-tight">{e.degree}</span>
+                  <span class="text-sm text-ink-soft">{e.school}</span>
+                </div>
+                <span class="label-mono text-ink-faint">{e.year}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <ul class="flex flex-col gap-1.5">
+          {
+            certifications.map((cert) => (
+              <li class="flex gap-2 text-sm leading-relaxed text-ink-soft">
+                <span class="text-accent" aria-hidden>
+                  ▪
+                </span>
+                <span>{cert}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

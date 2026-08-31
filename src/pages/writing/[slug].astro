@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content'
+import Base from '@/layouts/Base.astro'
+import { SITE, url } from '@/lib/site'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft)
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+const { title, description, pubDate, tags } = post.data
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+---
+
+<Base title={`${title} — ${SITE.name}`} description={description}>
+  <article class="mx-auto max-w-3xl px-5 py-14 md:px-8">
+    <a href={url('/writing/')} class="label-mono text-ink-faint transition-colors hover:text-accent">
+      ← All writing
+    </a>
+
+    <header class="mt-6 flex flex-col gap-3 border-b border-line pb-8">
+      <p class="label-mono text-ink-faint">{dateFmt.format(pubDate)}</p>
+      <h1 class="text-3xl font-semibold tracking-tight text-balance">{title}</h1>
+      <p class="text-lg leading-relaxed text-ink-soft">{description}</p>
+      {
+        tags.length > 0 && (
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            {tags.map((tag) => (
+              <span class="border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-ink-faint">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </header>
+
+    <div class="prose mt-8">
+      <Content />
+    </div>
+  </article>
+</Base>

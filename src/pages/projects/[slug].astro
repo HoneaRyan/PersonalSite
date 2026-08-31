@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from 'astro:content'
+import Base from '@/layouts/Base.astro'
+import StatusChip from '@/components/site/StatusChip.astro'
+import TechChips from '@/components/site/TechChips.astro'
+import MetricTile from '@/components/site/MetricTile.astro'
+import { SITE, url } from '@/lib/site'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft)
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }))
+}
+
+const { project } = Astro.props
+const { Content } = await render(project)
+const { title, summary, status, org, role, period, tech, metrics, links, confidential } =
+  project.data
+const meta = [org, role, period].filter(Boolean).join(' · ')
+---
+
+<Base title={`${title} — ${SITE.name}`} description={summary}>
+  <article class="mx-auto max-w-3xl px-5 py-14 md:px-8">
+    <a href={url('/projects/')} class="label-mono text-ink-faint transition-colors hover:text-accent">
+      ← All projects
+    </a>
+
+    <header class="mt-6 flex flex-col gap-4 border-b border-line pb-8">
+      <div class="flex flex-wrap items-center gap-3">
+        <h1 class="text-3xl font-semibold tracking-tight">{title}</h1>
+        {
+          confidential && (
+            <span class="border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.15em] text-ink-faint">
+              Proprietary
+            </span>
+          )
+        }
+        <StatusChip status={status} />
+      </div>
+      {meta && <p class="label-mono text-ink-faint">{meta}</p>}
+      <p class="text-lg leading-relaxed text-ink-soft">{summary}</p>
+      {
+        confidential && (
+          <p class="border border-line bg-paper px-4 py-3 text-sm italic leading-relaxed text-ink-faint">
+            This work runs on proprietary client data. The client, datasets, and specific
+            results are withheld — this case study describes the shape of the work.
+          </p>
+        )
+      }
+      <TechChips tech={tech} />
+      {
+        links.length > 0 && (
+          <div class="flex flex-wrap gap-4">
+            {links.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="label-mono text-accent transition-colors hover:text-accent-strong"
+              >
+                {link.label} ↗
+              </a>
+            ))}
+          </div>
+        )
+      }
+      {
+        metrics.length > 0 && (
+          <div class="grid grid-cols-2 gap-3 pt-2 md:grid-cols-3">
+            {metrics.map((m) => (
+              <MetricTile value={m.value} label={m.label} />
+            ))}
+          </div>
+        )
+      }
+    </header>
+
+    <div class="prose mt-8">
+      <Content />
+    </div>
+  </article>
+</Base>

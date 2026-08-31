@@ -1,0 +1,68 @@
+[
+  {
+    "id": "bdo",
+    "org": "BDO USA, Government Digital Transformation",
+    "role": "Data Scientist Supervisor",
+    "start": "2022",
+    "end": null,
+    "location": "Memphis, TN",
+    "summary": "Lead data science for government digital-transformation work — supervising a multidisciplinary team of data scientists, analysts, and visualization specialists across federal, state, and private-sector contracts.",
+    "highlights": [
+      "Oversaw data operations for Florida's Homeowner Assistance Fund, managing application-to-payment processing for more than $550M in federal relief assistance",
+      "Redesigned an unstructured data-extraction platform from a single-threaded process to a multithreaded platform supporting 100+ dashboards and 1,000+ users",
+      "Lead data scientist on the complete refactor of a statewide HR and payroll system from mainframe to cloud",
+      "Lead development of end-to-end data platforms, from ingesting disparate sources to delivering fully autonomous systems for client operations",
+      "Implement hybrid recommendation models in Databricks with an optimized model-serving solution powering customer recommendations for eCommerce systems",
+      "Support internal monitoring and reporting programs that strengthen operational decision-making and transparency for government clients"
+    ],
+    "tech": [
+      "Python",
+      "SQL",
+      "Databricks",
+      "PySpark",
+      "Informatica",
+      "Power Platform"
+    ],
+    "order": 1
+  },
+  {
+    "id": "fedex",
+    "org": "FedEx Express",
+    "role": "Decision Scientist",
+    "start": "2018",
+    "end": "2022",
+    "location": "Memphis, TN",
+    "summary": "Data science for global express logistics — building and hardening the systems that kept international shipments moving, compliant, and profitable.",
+    "highlights": [
+      "Led development of a customs clearance system that protected tens of millions in revenue by automating and streamlining paperwork processing",
+      "Applied QDM and Six Sigma methodologies to find process inefficiencies and ship scalable, data-driven fixes",
+      "Improved ETL workflows through rigorous schema design, data cleaning, and efficient pipeline structuring",
+      "Trained new engineers across legacy and modern tech stacks, ensuring quick adoption of mission-critical systems"
+    ],
+    "tech": [
+      "Python",
+      "Java",
+      "SQL",
+      "ColdFusion"
+    ],
+    "order": 2
+  },
+  {
+    "id": "electrolux",
+    "org": "Electrolux Cooking R&D",
+    "role": "Software Engineering & Data Science Intern",
+    "start": "May 2017",
+    "end": "Aug 2017",
+    "location": "Springfield, TN",
+    "summary": "Applied NLP to millions of rows of quality data to surface hidden failure trends in oven technology and advise R&D leadership on scalable machine-learning adoption.",
+    "highlights": [
+      "Clustered technician reports with Bag-of-Words and Word2Vec to categorize failure types; sentiment analysis on customer feedback surfaced unreported technical issues",
+      "Delivered strategic recommendations to R&D directors on adopting scalable big-data and ML solutions"
+    ],
+    "tech": [
+      "Python",
+      "NLP"
+    ],
+    "order": 3
+  }
+]

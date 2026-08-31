@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content'
+import Base from '@/layouts/Base.astro'
+import ProjectCard from '@/components/site/ProjectCard.astro'
+import { SITE } from '@/lib/site'
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+---
+
+<Base title={`Projects — ${SITE.name}`} description="Case studies in grant-funded data work, digital government, and nonprofit data.">
+  <section class="mx-auto max-w-5xl px-5 py-14 md:px-8">
+    <p class="label-mono text-accent">Projects</p>
+    <h1 class="mt-3 text-3xl font-semibold tracking-tight">Case studies</h1>
+    <p class="mt-3 max-w-2xl leading-relaxed text-ink-soft">
+      Each project follows the shape funders and reviewers expect: the problem, the approach, and
+      the measurable outcome.
+    </p>
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</Base>

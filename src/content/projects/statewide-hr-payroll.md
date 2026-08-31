@@ -33,5 +33,8 @@ differently but genuinely more observable and maintainable.
 
 ## The outcome
 
-[In progress — add outcomes as milestones land: systems migrated, employees served,
-operating-cost changes.]
+[In progress]
+
+## Lessons Learned (so far)
+
+There's a lot of knowledge we are losing with the loss of some of the mainframe generations. These developers are insanely good at what they do. The amount of times I heard engineers refer to specific memory addresses and know exactly what's happening at those addresses continues to blow my mind. With the onset of the AI generation of developers, I've very much enjoyed working in the juxtaposition of a generation that required physical manuals to work on their systems.

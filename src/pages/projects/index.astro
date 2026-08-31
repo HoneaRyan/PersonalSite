@@ -14,8 +14,10 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
     <p class="label-mono text-accent">Projects</p>
     <h1 class="mt-3 text-3xl font-semibold tracking-tight">Case studies</h1>
     <p class="mt-3 max-w-2xl leading-relaxed text-ink-soft">
-      Each project follows the shape funders and reviewers expect: the problem, the approach, and
-      the measurable outcome.
+      Each project follows the same shape: the problem, the approach, and the measurable
+      outcome. Client work is intentionally vague on specifics — protecting the client is part
+      of the job. The <em>lessons learned</em> in each study are where I go deeper on the
+      effort itself.
     </p>
     <div class="mt-10 grid gap-4 md:grid-cols-2">
       {projects.map((project) => <ProjectCard project={project} />)}

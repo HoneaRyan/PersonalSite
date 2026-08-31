@@ -32,6 +32,6 @@ platform as a production service rather than a batch export.
 ## The measurement
 
 A recommender you don't measure is a guess in production. The engine's results are
-analyzed on an ongoing basis — how recommendations perform, where they fall short, and
+analyzed on an ongoing basis: how recommendations perform, where they fall short, and
 what that feeds back into the next iteration of the models. The specific numbers belong
 to the client; the discipline of the loop is the deliverable I can show.

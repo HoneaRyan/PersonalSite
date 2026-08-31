@@ -5,7 +5,7 @@ status: active
 org: Mississippi Center for Justice
 tech: [React Native, PostgreSQL]
 featured: true
-order: 1
+order: 4
 ---
 
 CopWatch is a community-safety collaboration with the [Mississippi Center for Justice](https://mscenterforjustice.org/): a crowd-sourced phone application for documenting and sharing the locations of police, ICE, and federal-agent activity in Mississippi communities.

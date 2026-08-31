@@ -2,18 +2,30 @@
 
 ## Vision
 
-A modern professional personal site for Ryan Honea, a senior data scientist working at the
-intersection of **government, grants, and public-interest data**. The site is a career
-instrument, not a novelty piece — its audiences are government program officers, nonprofit
-leaders, grant reviewers, and civic-tech collaborators.
+A modern professional personal site for Ryan Honea, a senior data scientist. The site is a
+career instrument, not a novelty piece. Primary positioning: **data as a discipline,
+practiced across industries** — Ryan is applying for roles beyond the public sector, so the
+site must read industry-agnostic first. His breadth is documented, not claimed: logistics
+(FedEx), eCommerce (recommendation engine), consumer R&D (Electrolux), government (BDO),
+legal evidence (SPLC). He cares about where the field is going and the interstitial layer
+where one industry's advances become another's head start.
 
-Three pillars the site must communicate:
+Audiences: hiring managers and technical leaders across industries, plus the civic-data
+community.
 
-1. **Grant-based data work** — designing and delivering data systems where grants are the engine
-2. **Digital government** — modernizing public-sector systems with modern data principles
-   (pipelines, lineage, measurement)
-3. **Nonprofit data → funding power** — turning nonprofit program data into actionable,
-   metric-based evidence that wins government grants
+Three pillars the home page communicates:
+
+1. **Data platforms & engineering** — end-to-end platforms, schema rigor, lineage,
+   audit-ready pipelines
+2. **Machine learning in production** — shipped models (Databricks Model Serving, NLP),
+   measured continuously
+3. **Decision science & evidence** — data storytelling, statistical evidence, quality-driven
+   measurement
+
+The **public-interest practice** (grants, digital government, nonprofit data → funding
+power) is a featured *side* practice — framed on the home page as "on the side," a personal
+practice that happens to align with his current role. It's a differentiator, not the
+identity. Don't let copy anywhere re-center the site on civic work.
 
 ## Structure
 

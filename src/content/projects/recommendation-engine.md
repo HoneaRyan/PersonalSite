@@ -6,7 +6,7 @@ org: Private eCommerce client
 role: Data scientist
 tech: [Python, Databricks, MLflow]
 featured: true
-order: 5
+order: 1
 confidential: true
 ---
 

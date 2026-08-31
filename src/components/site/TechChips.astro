@@ -1,0 +1,19 @@
+---
+interface Props {
+  tech: string[]
+}
+
+const { tech } = Astro.props
+---
+
+{
+  tech.length > 0 && (
+    <div class="flex flex-wrap gap-1.5">
+      {tech.map((t) => (
+        <span class="border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-ink-faint">
+          {t}
+        </span>
+      ))}
+    </div>
+  )
+}

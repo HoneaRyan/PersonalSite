@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+@theme {
+    --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', 'Cascadia Mono', monospace;
+
+    /* ── Site palette — data-flavored professional (light) ─────────────── */
+    --color-paper: oklch(0.985 0.005 95);
+    --color-surface: oklch(1 0 0);
+    --color-ink: oklch(0.24 0.02 255);
+    --color-ink-soft: oklch(0.45 0.015 255);
+    --color-ink-faint: oklch(0.58 0.01 255);
+    --color-line: oklch(0.905 0.005 255);
+    --color-line-strong: oklch(0.82 0.01 255);
+    --color-accent: oklch(0.42 0.11 255);
+    --color-accent-strong: oklch(0.35 0.10 255);
+    --color-accent-soft: oklch(0.94 0.025 255);
+    --color-signal: oklch(0.76 0.12 78);
+    --color-positive: oklch(0.52 0.10 165);
+    --color-positive-soft: oklch(0.95 0.03 165);
+
+    /* ── RPG palette — used only by the /character easter egg ──────────── */
+    --color-rpg-gold: oklch(0.80 0.14 85);
+    --color-rpg-gold-dim: oklch(0.55 0.09 85);
+    --color-rpg-magenta: oklch(0.65 0.22 330);
+    --color-rpg-navy: oklch(0.10 0.06 260);
+    --color-rpg-panel: oklch(0.14 0.07 260);
+    --color-rpg-panel-alt: oklch(0.18 0.07 260);
+    --color-rpg-border: oklch(0.32 0.09 260);
+    --color-rpg-text: oklch(0.94 0.02 90);
+    --color-rpg-muted: oklch(0.55 0.06 260);
+    --color-rpg-cursor: oklch(0.92 0.12 85);
+}
+
+@layer base {
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply bg-paper text-ink antialiased;
+  }
+  ::selection {
+    background: oklch(0.94 0.025 255);
+  }
+}
+
+@layer utilities {
+  /* Small-caps mono label — section eyebrows, metadata, chips */
+  .label-mono {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em];
+  }
+
+  /* Faint graph-paper grid, used behind the hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, oklch(0.24 0.02 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.24 0.02 255 / 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .bg-grid-fade {
+    mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+  }
+}
+
+/* ── Markdown content (case studies, posts) ─────────────────────────────── */
+.prose {
+  @apply text-ink leading-relaxed;
+}
+.prose > * + * {
+  margin-top: 1em;
+}
+.prose h2 {
+  @apply text-xl font-semibold tracking-tight mt-10 mb-3;
+}
+.prose h3 {
+  @apply text-lg font-semibold tracking-tight mt-8 mb-2;
+}
+.prose p {
+  @apply text-ink-soft;
+}
+.prose ul,
+.prose ol {
+  @apply pl-5 flex flex-col gap-1.5 text-ink-soft;
+}
+.prose ul {
+  list-style: none;
+}
+.prose ul > li {
+  position: relative;
+}
+.prose ul > li::before {
+  content: '▪';
+  position: absolute;
+  left: -1.1rem;
+  color: var(--color-accent);
+  font-size: 0.7em;
+  top: 0.45em;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose a {
+  @apply text-accent underline underline-offset-4 decoration-line-strong hover:decoration-accent transition-colors;
+}
+.prose code {
+  @apply font-mono text-[0.9em] bg-accent-soft px-1 py-0.5;
+}
+.prose pre {
+  @apply bg-ink text-paper p-4 overflow-x-auto text-sm;
+}
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+.prose blockquote {
+  @apply border-l-2 border-accent pl-4 text-ink-soft italic;
+}
+.prose strong {
+  @apply text-ink font-semibold;
+}
+
+/* ── Thin neutral scrollbars (also used by the RPG screen panels) ───────── */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.82 0.01 255 / 0.6) transparent;
+}

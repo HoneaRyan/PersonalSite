@@ -1,0 +1,43 @@
+---
+import { SITE, url } from '@/lib/site'
+
+const year = new Date().getFullYear()
+---
+
+<footer class="mt-24 border-t border-line">
+  <div
+    class="mx-auto flex max-w-5xl flex-col justify-between gap-6 px-5 py-10 sm:flex-row sm:items-center md:px-8"
+  >
+    <div class="flex flex-col gap-1">
+      <span class="font-mono text-sm text-ink">ryan<span class="text-accent">.</span>honea</span>
+      <span class="text-xs text-ink-faint">© {year} {SITE.name} · Data in the public interest</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href={`mailto:${SITE.email}`} class="label-mono text-ink-faint transition-colors hover:text-ink">
+        Email
+      </a>
+      <a
+        href={SITE.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="label-mono text-ink-faint transition-colors hover:text-ink"
+      >
+        LinkedIn
+      </a>
+      <a
+        href={SITE.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="label-mono text-ink-faint transition-colors hover:text-ink"
+      >
+        GitHub
+      </a>
+      <a
+        href={url('/character/')}
+        class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint/60 transition-colors hover:text-rpg-gold-dim"
+      >
+        ▸ press start
+      </a>
+    </div>
+  </div>
+</footer>

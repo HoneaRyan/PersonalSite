@@ -1,0 +1,39 @@
+---
+import { SITE, url } from '@/lib/site'
+
+const nav = [
+  { href: url('/projects/'), label: 'Projects' },
+  { href: url('/writing/'), label: 'Writing' },
+  { href: url('/about/'), label: 'About' },
+]
+const path = Astro.url.pathname
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-5 md:px-8">
+    <a href={url('/')} class="font-mono text-sm tracking-tight text-ink transition-colors hover:text-accent">
+      ryan<span class="text-accent">.</span>honea
+    </a>
+    <nav class="flex items-center gap-5 md:gap-7">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'label-mono transition-colors',
+              path.startsWith(item.href) ? 'text-ink' : 'text-ink-faint hover:text-ink',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={`mailto:${SITE.email}`}
+        class="label-mono hidden border border-line-strong px-3 py-1.5 text-accent transition-colors hover:border-accent sm:inline-flex"
+      >
+        Contact
+      </a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { url } from '@/lib/site'
+import StatusChip from './StatusChip.astro'
+import TechChips from './TechChips.astro'
+
+interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+const { title, summary, status, org, period, tech, confidential } = project.data
+---
+
+<a
+  href={url(`/projects/${project.id}/`)}
+  class="group flex flex-col gap-3 border border-line bg-surface p-5 transition-colors hover:border-accent"
+>
+  <div class="flex items-center justify-between gap-3">
+    <h3 class="font-semibold tracking-tight transition-colors group-hover:text-accent">{title}</h3>
+    <div class="flex shrink-0 items-center gap-1.5">
+      {
+        confidential && (
+          <span class="border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.15em] text-ink-faint">
+            Proprietary
+          </span>
+        )
+      }
+      <StatusChip status={status} />
+    </div>
+  </div>
+  {
+    (org || period) && (
+      <p class="label-mono text-ink-faint">{[org, period].filter(Boolean).join(' · ')}</p>
+    )
+  }
+  <p class="text-sm leading-relaxed text-ink-soft">{summary}</p>
+  <div class="mt-auto pt-1">
+    <TechChips tech={tech} />
+  </div>
+</a>

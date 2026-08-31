@@ -1,5 +1,5 @@
 import { parseCharacter } from '@/lib/parsers'
-import characterMd from '@/content/character.md?raw'
+import characterMd from '@/content/rpg/character.md?raw'
 
 const char = parseCharacter(characterMd)
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { parseStats, type StatGroup } from '@/lib/parsers'
-import statsMd from '@/content/stats.md?raw'
+import statsMd from '@/content/rpg/stats.md?raw'
 
 const groups: StatGroup[] = parseStats(statsMd)
 

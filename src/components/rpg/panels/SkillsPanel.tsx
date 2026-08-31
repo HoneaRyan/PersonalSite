@@ -1,6 +1,6 @@
 import { parseSkills, type Skill, type Tier } from '@/lib/parsers'
 import { cn } from '@/lib/utils'
-import skillsMd from '@/content/skills.md?raw'
+import skillsMd from '@/content/rpg/skills.md?raw'
 
 const skills: Skill[] = parseSkills(skillsMd)
 

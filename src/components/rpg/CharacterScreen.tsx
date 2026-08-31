@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusPanel } from "./panels/StatusPanel";
@@ -22,9 +22,19 @@ const PANELS: Record<Section, React.ReactNode> = {
   quests: <QuestsPanel />,
 };
 
+const EXIT_HREF = import.meta.env.BASE_URL;
+
 export function CharacterScreen() {
   const [active, setActive] = useState<Section>("status");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") window.location.href = EXIT_HREF;
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const selectSection = (id: Section) => {
     setActive(id);
@@ -93,10 +103,16 @@ export function CharacterScreen() {
         </main>
 
         {/* Mobile footer */}
-        <div className="border-t-2 border-rpg-border bg-rpg-panel px-4 py-2 shrink-0">
+        <div className="border-t-2 border-rpg-border bg-rpg-panel px-4 py-2 shrink-0 flex items-center justify-between">
           <span className="text-rpg-muted text-[9px] tracking-widest font-mono uppercase">
             <span className="text-rpg-gold-dim">[ ☰ ]</span> Menu
           </span>
+          <a
+            href={EXIT_HREF}
+            className="text-rpg-muted text-[9px] tracking-widest font-mono uppercase hover:text-rpg-gold transition-colors"
+          >
+            <span className="text-rpg-gold-dim">[ × ]</span> Exit
+          </a>
         </div>
       </div>
 
@@ -178,6 +194,12 @@ export function CharacterScreen() {
             <span className="text-rpg-muted text-[10px] tracking-widest font-mono uppercase">
               <span className="text-rpg-gold-dim">[ Enter ]</span> Select
             </span>
+            <a
+              href={EXIT_HREF}
+              className="ml-auto text-rpg-muted text-[10px] tracking-widest font-mono uppercase hover:text-rpg-gold transition-colors"
+            >
+              <span className="text-rpg-gold-dim">[ Esc ]</span> Leave
+            </a>
           </div>
         </div>
       </div>

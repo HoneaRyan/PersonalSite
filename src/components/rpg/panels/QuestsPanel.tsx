@@ -1,6 +1,6 @@
 import { parseQuests, type Quest } from '@/lib/parsers'
 import { cn } from '@/lib/utils'
-import questsMd from '@/content/quests.md?raw'
+import questsMd from '@/content/rpg/quests.md?raw'
 
 const log = parseQuests(questsMd)
 

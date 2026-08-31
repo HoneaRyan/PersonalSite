@@ -6,7 +6,7 @@
     "start": "2022",
     "end": null,
     "location": "Memphis, TN",
-    "summary": "Lead data science for government digital-transformation work — supervising a multidisciplinary team of data scientists, analysts, and visualization specialists across federal, state, and private-sector contracts.",
+    "summary": "Lead data science for government digital-transformation work, supervising a multidisciplinary team of data scientists, analysts, and visualization specialists across federal, state, and private-sector contracts.",
     "highlights": [
       "Oversaw data operations for Florida's Homeowner Assistance Fund, managing application-to-payment processing for more than $550M in federal relief assistance",
       "Redesigned an unstructured data-extraction platform from a single-threaded process to a multithreaded platform supporting 100+ dashboards and 1,000+ users",
@@ -32,7 +32,7 @@
     "start": "2018",
     "end": "2022",
     "location": "Memphis, TN",
-    "summary": "Data science for global express logistics — building and hardening the systems that kept international shipments moving, compliant, and profitable.",
+    "summary": "Data science for global express logistics, building and hardening the systems that kept international shipments moving, compliant, and profitable.",
     "highlights": [
       "Led development of a customs clearance system that protected more than $30M in revenue by automating and streamlining paperwork processing",
       "Applied QDM and Six Sigma methodologies to find process inefficiencies and ship scalable, data-driven fixes",

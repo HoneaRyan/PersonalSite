@@ -1,6 +1,6 @@
 ---
 title: Florida Homeowner Assistance Fund
-summary: Data operations for a statewide federal relief program — managing application-to-payment processing for more than $550M in pandemic-era homeowner assistance.
+summary: Data operations for a statewide federal relief program, managing application-to-payment processing for more than $550M in pandemic-era homeowner assistance.
 status: completed
 org: BDO · State of Florida
 role: Data operations lead
@@ -19,7 +19,7 @@ order: 2
 <!-- TODO(Ryan): add the program years to `period` and the actual stack to `tech`. -->
 
 Florida's Homeowner Assistance Fund delivered federal relief to homeowners hit by the
-pandemic — mortgage help for people at real risk of losing their homes. Relief programs
+pandemic: mortgage help for people at real risk of losing their homes. Relief programs
 at this scale live or die on their data operations: every dollar must move quickly _and_
 survive an audit.
 
@@ -28,7 +28,7 @@ survive an audit.
 A statewide program moving hundreds of millions in federal funds needs
 application-to-payment processing that is fast enough to help people in crisis and
 rigorous enough for federal oversight. Disparate intake sources, eligibility rules, and
-payment rails all have to reconcile — continuously, not quarterly.
+payment rails all have to reconcile continuously, not quarterly.
 
 ## The approach
 
@@ -41,7 +41,7 @@ kept the program transparent and audit-ready throughout.
 - More than **$550M in federal relief assistance** processed from application through
   payment
 - More than **10,000 homeowner applications** processed for assistance
-- Full reconciliation of all funds — **down to the penny**
+- Full reconciliation of all funds, **down to the penny**
 
 ## Lessons Learned
 

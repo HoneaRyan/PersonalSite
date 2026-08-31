@@ -18,7 +18,7 @@ schools, but defensible statistical evidence.
 
 ## The problem
 
-COVID-19 case data existed — scattered across individual school systems, in whatever
+COVID-19 case data existed, scattered across individual school systems in whatever
 format each district kept it. Turning that into evidence usable in potential litigation
 meant acquiring it, standardizing it, and analyzing it to a standard that would hold up
 to scrutiny.
@@ -32,6 +32,6 @@ statistical analysis of case occurrence following the mandate's end.
 
 ## The outcome
 
-Delivered the completed statistical analysis to SPLC for use in potential suits — a
-working example of the thing this site is about: turning scattered public-interest data
+Delivered the completed statistical analysis to SPLC for use in potential suits: a
+working example of the thing this site is about, turning scattered public-interest data
 into metric-based evidence an organization can act on.

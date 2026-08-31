@@ -12,7 +12,7 @@ CopWatch is a community-safety collaboration with the [Mississippi Center for Ju
 
 ## The problem
 
-Communities and the advocates who serve them often lack a shared, timely picture of law-enforcement activity in their area. Individual observations stay siloed — a report here, a phone call there — and never become information a community can act on.
+Communities and the advocates who serve them often lack a shared, timely picture of law-enforcement activity in their area. Individual observations stay siloed: a report here, a phone call there. They never become information a community can act on.
 
 ## The approach
 

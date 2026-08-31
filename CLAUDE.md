@@ -41,16 +41,16 @@ identity. Don't let copy anywhere re-center the site on civic work.
 ## Tech
 
 - **Astro + React islands + Tailwind 4**, deployed to **GitHub Pages** via
-  `.github/workflows/deploy.yml` (project site: base `/PersonalSite`). If a custom domain is
-  added later, update `site`/`base` in `astro.config.mjs`.
+  `.github/workflows/deploy.yml`, served at the custom domain **https://honea.info**
+  (no base path; `site` in `astro.config.mjs`).
 - Content is data-driven via Astro content collections (`src/content.config.ts`):
   - `src/content/projects/*.md` — case studies (`_template.md` shows the frontmatter)
   - `src/content/posts/*.md` — on-site blog posts
   - `src/content/external-posts.json` — writing published elsewhere (Medium etc.)
   - `src/content/experience.json` — work history for the About timeline
   - `src/content/rpg/*.md` — content for the `/character` easter egg only
-- Internal links must go through `url()` from `src/lib/site.ts` so the GitHub Pages base
-  path is applied.
+- Internal links go through `url()` from `src/lib/site.ts` (applies the base path, now
+  `/`; keep using it in case the deployment target ever changes).
 
 ## Design
 
